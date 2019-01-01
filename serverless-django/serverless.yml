@@ -17,6 +17,7 @@ service: serverless-django # NOTE: update this with your service name
 # Check out our docs for more details
 # frameworkVersion: "=X.X.X"
 
+custom: ${file(./variables.yml)}
 provider:
   name: aws
   runtime: python3.7
@@ -56,6 +57,7 @@ provider:
 
 functions:
   hello:
+    environment: ${self:custom}
     handler: handler.hello
 
 #    The following are a few example events you can configure
